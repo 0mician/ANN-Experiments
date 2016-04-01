@@ -7,6 +7,7 @@ of the Artificial Neural Networks class at KU Leuven (Spring 2016). The
 programming environment used to illustrate the concepts was matlab. I used
 Matlab R2015b, with the Neural Network Toolbox.
 
-# Perceptron
+# simplePerceptron
 Collection of homemade functions displaying characteristics of perceptrons.
+
 
