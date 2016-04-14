@@ -1,5 +1,5 @@
 # ANN-Experiments
-My experiments with artificial neural nets, along with some reports
+Experiments with artificial neural nets, along with some reports
 
 # Context
 Inspiration for these scripts comes mostly from lectures and exercise sessions 
@@ -10,4 +10,6 @@ Matlab R2015b, with the Neural Network Toolbox.
 # simplePerceptron
 Collection of homemade functions displaying characteristics of perceptrons.
 
+# feedForwardMultiLayer
+Script created for analysis found in the report section under *backprop-ffn*
 
