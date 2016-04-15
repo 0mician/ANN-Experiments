@@ -1,4 +1,4 @@
-function simplePerceptron()
+function simple_perceptron()
 % small library of function to interact with perceptrons
 
     function [net] = setAndTrainPerceptron(input, target)

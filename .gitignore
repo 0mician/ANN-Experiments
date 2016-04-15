@@ -18,4 +18,14 @@ data/
 .~lock.*
 MatlabStyle1p5.pdf
 html/
+export_fig/
+
+#latex
+*.aux
+*.bbl
+*.blg
+
+# R
+*.RData
+*.Rhistory
 
