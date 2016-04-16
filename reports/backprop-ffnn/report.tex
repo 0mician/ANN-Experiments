@@ -113,7 +113,26 @@ steps to obtain such a satisfying fit (with an $R^2$ of 1).
   \label{fig:trainll}
 \end{figure}
 
-\section{Noisy learning}
+\section{Learning in noisy setting}
+
+To simulate the presence of noise in the dataset, I chose to add a
+normally distributed $\epsilon$ to $f(x)$, for example:
+$f_{noisy}=f(x)+N(0,1)$. 
+
+See graphic \ref{fig:trainnoise} where the noisy dataset was used for
+training. Typical overfitting can be seen when raising the value of
+the \emph{epochs}, represented in the graph by the red curve, which
+upon closer inspection seems to be following the noise rather than
+fitting the underlying function. Strategies to decide when to stop
+training can be implemented, such as validation set, cross validation,
+and bootstrapping.
+
+\begin{figure}[H]
+  % \centering
+  \includegraphics[scale=.43]{trainnoise.pdf}
+  \caption{Example of overfitting in noisy dataset}  
+  \label{fig:trainnoise}
+\end{figure}
 
 \section{Perspectives}
 
