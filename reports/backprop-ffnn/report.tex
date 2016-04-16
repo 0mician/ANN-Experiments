@@ -16,7 +16,8 @@
 \title{ \huge Artificial neural networks \\ 
   { \large Assignment 1: Supervised learning and generalization }}
 \author{
-        Lood, Cedric
+        Lood, Cedric \\
+        \small Master of Bioinformatics
 }
 
 \begin{document}
@@ -51,7 +52,7 @@ illustrated here (graphics created using ggplot2 and R \footnote{All
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=.65]{true_functions.pdf}
+    \includegraphics[scale=.50]{true_functions.pdf}
     \caption{Graphs of the underlying true functions used in the analysis}
     \label{fig:functions}
 \end{figure}
@@ -66,25 +67,26 @@ The architecture chosen for the feedforward multilayer neural net
 consisted of 1 hidden layer, with 10 neurons, and 1 neuron in the
 output layer. The transfer function for the hidden layer neurons is
 the sigmoid, and the output neuron has a linear transfer function
-$f(x)=x$. 
-
-On figure \ref{fig:traingd}, one can see that the training of the
-neural net using gradient descent (\emph{traingd} in matlab) had very
-poor result. 
+$f(x)=x$. On figure \ref{fig:traingd}, one can see that the training
+of the neural net using gradient descent (\emph{traingd} in matlab):
 
 \begin{description}
 \item [top graph] that represents the polynomial function
-  $f(x)=x^3-11x+2$ performed the worst, with a problem of computation
-  of the gradient during the training. The gradient at each
-  \emph{epoch} of the training becomes larger and larger, and
-  eventually too large to represent (\emph{NaN} in matlab), and the
-  training fails so I kept it below 50 \emph{epochs}.
-\item [bottom graph] the gradient descent performed a little bit
-  better on $g(x)=e(-x^2)sin(10x)$ but the performance were still not
+  $f(x)=x^3-11x+2$. This performed originally the worst, with a
+  problem of computation of the gradient during the training. The
+  gradient at each \emph{epoch} of the training becomes larger and
+  larger, and eventually too large to represent (\emph{NaN} in matlab)
+  after only 50 \emph{epochs}. After investigation, the problem seemed
+  to lie in the variance of the target function, which was too large
+  for the gradient descent algorithm. I found a solution to that
+  problem that involved rescaling the function's variance using the
+  \emph{zscore} function in matlab.
+\item [bottom graph] the gradient descent performed without problems
+  on $g(x)=e(-x^2)sin(10x)$ but the performance were still not
   satisfying in terms of approximation. I tried raising the number of
-  \emph{epochs} to 10000 and 100000 but the behaviour there was that
-  the approximation was getting closer and closer to a flat function
-  like $y = 0$, hence traversing 
+  \emph{epochs} to 10000 and 100000 (not shown on the graph), which
+  takes significantly more time to compute, but it did not result in
+  any significant increase in the quality of the fit.
 \end{description}
 
 \begin{figure}[H]
@@ -94,19 +96,41 @@ poor result.
   \label{fig:traingd}
 \end{figure}
 
-On the other hand, other learning methods worked really well with the
-2 functions. The results in terms of fitting and performance are
-illustrated in \ref{fig:trainll}
+Training with Levenberg-Marquardt backpropagation methods worked
+really well with the 2 functions. The results in terms of fitting and
+performance are illustrated in \ref{fig:trainll}. Only a few
+iterations of the training algorithm were required to fit the
+polynomial function $f(x)=x^3-11x+2$. At most 10 iterations were
+sufficient to obtain a $R^2$ of 1 for the model.
+
+The function $g(x)=e(-x^2)sin(10x)$ took an order of magnitude more
+steps to obtain such a satisfying fit (with an $R^2$ of 1).
 
 \begin{figure}[H]
   % \centering
   \includegraphics[scale=.43]{trainlm.pdf}
-  \caption{Training with gradient descent}
+  \caption{Training with Levenberg-Marquardt backpropagation}  
   \label{fig:trainll}
 \end{figure}
 
 \section{Noisy learning}
 
+\section{Perspectives}
+
+A couple of observations and insights were gained doing this analysis. 
+
+\begin{itemize}
+\item the stochasticity of the process of training was really visible
+  in the results. Some of the neural networks did fit the data almost
+  to perfection on some of the training (as can be surveyed using the
+  $R^2$ variable available through \emph{postregm}), only to perform
+  poorly during another round of training with the same
+  settings. Setting a seed value solved that variation, but it is an
+  interesting observation nonetheless.
+\item in general, gradient descent performs terribly in terms of
+  fitting noiseless, known underlying function. Training with
+  Levert-Maquart yielded the best performance overall.
+\end{itemize}
 
 \bibliographystyle{ieeetr} 
 \bibliography{bib-db}

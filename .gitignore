@@ -29,3 +29,6 @@ export_fig/
 *.RData
 *.Rhistory
 
+# test matlab
+test.m
+
