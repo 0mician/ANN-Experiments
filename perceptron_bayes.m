@@ -1,14 +1,14 @@
-% Generate a single neuron perceptron with zero bias and two arbitrary weights
-% plot the targets and decision boundary
-numinput=10;
+clear; clc; close all;
+addpath export_fig
+
+% Creation of a perceptron (no bias) to generate training dataset
+numinput=50;
 net=newp([-1 1; -1 1], 1);
 net.IW{1,1}=rands(1,2);
 P=rands(2,numinput);
 T=sim(net,P);
-subplot(1,2,1);
-plotpv(P,T);
-hold on;
-plotpc(net.IW{1,1},0);
+
+figure('Color',[1 1 1]);
 
 % Generate a prior distribution for the weights and plot it
 w1=(-1:0.1:1)';
@@ -19,11 +19,13 @@ for i=1:length(w1)
         prior(i,j)=(1/(2*pi))*exp(-norm(w)^2)/2;
     end
 end
-subplot(1,2,2);
+subplot(2,2,2);
 surf(w1,w2,prior);
+title('Prior','FontSize', 16)
+xlabel('w1');
+ylabel('w2');
 
-% Create posteriors by presenting all targets one by one.
-% Plot updated distribution after each update.
+% Create posterior (iterate over points in dataset)
 for k=1:numinput
     x=P(:,k);
     for i=1:length(w1)
@@ -40,6 +42,47 @@ for k=1:numinput
             prior(i,j)=prior(i,j)/n;
         end
     end
-    surf(w1,w2,prior);
-    pause(1);
 end
+
+subplot(2,2,3);
+surf(w1,w2,prior);
+title('Posterior','FontSize', 16)
+xlabel('w1');
+ylabel('w2');
+    
+% MAP weights selection and plotting of learned classifier on top of
+% perceptron
+prob=0;
+for i=1:length(w1)
+    for j=1:length(w2)
+        if (prior(i,j)>prob)
+            prob=prior(i,j);
+            maxind=[i,j];
+        end
+    end
+end
+
+subplot(2,2,1);
+plotpv(P,T); % plot labelled data
+hold on;
+perceptron = plotpc(net.IW{1,1},0); % plot perceptron classifier
+title('Classifiers','FontSize', 16)
+xlabel('X1');
+ylabel('X2');
+bayes_classifier = plotpc([w1(maxind(1)), w2(maxind(2))],0);
+set(bayes_classifier, 'Color', 'g');
+h_legend = legend([perceptron, bayes_classifier],'perceptron', 'bayes classifier');
+set(h_legend,'FontSize',14);
+
+% Countour plot + real weights from the perceptron (asterisks)
+subplot(2,2,4);
+hold off;
+contour(w1, w2, prior);
+hold on;
+x=net.IW{1,1};
+plot(x(2), x(1), 'r*');
+title('Contour plots and perceptron weights','FontSize', 16)
+xlabel('w1');
+ylabel('w2');
+
+export_fig('perceptron_bayes.pdf')
