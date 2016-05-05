@@ -36,8 +36,32 @@ the weight space) but tries to obtain a distribution over the weight
 space. Hence, quantification of certainty of predictions is possible
 without the use of validation set or resampling.
 
-\section{Simple perceptron}
+\section{BayesNN Demo}
 
+The figure \ref{fig:bayesnn}, produced with the script \footnote{
+  https://github.com/milt0n/ANN-Experiments/bayesnn.m} displays an
+example of classification of 4 labelled points. Starting from a
+gaussian, uninformative prior for the weights distribution. The
+algorithm computes first the posterior after having seen 2 datapoints
+$(-5,-5)$ and $(5,5)$. The posterior distribution takes then the shape
+of a sigmoidal ridge, with half the space with weights for $w_1$ and
+$w_2$ close to $0$. Those weights would create a classifier whose
+slope is positive, hence failing to classify the 2 points. After
+seeing the other points (which are impossible to classify linearly),
+we can see the posterior peaking a bit more.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.40]{bayesnn.pdf}
+    \caption{Bottom: evolution of the posterior through training. Top:
+      in green, the classifier extracted using MAP on the weights'
+      distribution}
+    \label{fig:bayesnn}
+\end{figure}
+
+\section{Decision boundary of classifier}
+
+\section{Function approximation}
 \bibliographystyle{ieeetr} 
 \bibliography{bib-db}
 
