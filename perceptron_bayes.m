@@ -80,7 +80,7 @@ hold off;
 contour(w1, w2, prior);
 hold on;
 x=net.IW{1,1};
-plot(x(2), x(1), 'r*');
+plot(x(2), x(1), 'r');
 title('Contour plots and perceptron weights','FontSize', 16)
 xlabel('w1');
 ylabel('w2');
