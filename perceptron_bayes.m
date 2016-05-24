@@ -21,7 +21,7 @@ for i=1:length(w1)
 end
 subplot(2,2,2);
 surf(w1,w2,prior);
-title('Prior','FontSize', 16)
+title('Prior','FontSize',18,'FontWeight', 'normal')
 xlabel('w1');
 ylabel('w2');
 
@@ -46,7 +46,7 @@ end
 
 subplot(2,2,3);
 surf(w1,w2,prior);
-title('Posterior','FontSize', 16)
+title('Posterior','FontSize',18,'FontWeight', 'normal')
 xlabel('w1');
 ylabel('w2');
     
@@ -66,7 +66,7 @@ subplot(2,2,1);
 plotpv(P,T); % plot labelled data
 hold on;
 perceptron = plotpc(net.IW{1,1},0); % plot perceptron classifier
-title('Classifiers','FontSize', 16)
+title('Classifiers','FontSize',18,'FontWeight', 'normal')
 xlabel('X1');
 ylabel('X2');
 bayes_classifier = plotpc([w1(maxind(1)), w2(maxind(2))],0);
@@ -76,13 +76,15 @@ set(h_legend,'FontSize',14);
 
 % Countour plot + real weights from the perceptron (asterisks)
 subplot(2,2,4);
-hold off;
 contour(w1, w2, prior);
-hold on;
+
 x=net.IW{1,1};
-plot(x(2), x(1), 'r');
-title('Contour plots and perceptron weights','FontSize', 16)
+
+subplot(2,2,4);
+hold on;
+plot(x(2), x(1), 'rx');
+title('Contour plots and perceptron weights','FontSize',18,'FontWeight', 'normal')
 xlabel('w1');
 ylabel('w2');
 
-export_fig('perceptron_bayes.pdf')
+% export_fig('perceptron_bayes.pdf')

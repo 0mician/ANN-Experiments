@@ -113,4 +113,4 @@ classifier = line(x1, x2, 'Color','g');
 h_legend = legend(classifier, 'classifier');
 set(h_legend,'FontSize',14);
 
-export_fig('bayesnn.pdf')
+%export_fig('bayesnn.pdf')
