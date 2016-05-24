@@ -46,14 +46,15 @@ a21_1000 = sim(netf1_1000,p1);
 % Plotting results
 %%%%%%%%%%%%%%%%%%
 
-figure;
-figure('Color',[1 1 1]);
-subplot(2,1,1);
-plot(xx1, ff, 'b', x1, fnoisy, 'ko', x1, cell2mat(a11_4), '--g', x1, cell2mat(a11_1000), '--r');
-h_legend = legend('true target', 'noise', 'trainlm 20', 'trainlm 1000'); 
-set(h_legend,'FontSize',14);
-subplot(2,1,2);
-plot(xx1, ff, 'b', x1, fnoisy, 'ko', x1, cell2mat(a21_20), '--g', x1, cell2mat(a21_1000), '--r');
-h_legend = legend('true target', 'noise', 'traingcf 20', 'traingcf 1000'); 
-set(h_legend,'FontSize',14);
-export_fig('trainnoise.pdf')
+% figure;
+% figure('Color',[1 1 1]);
+% subplot(2,1,1);
+% plot(xx1, ff, 'b', x1, fnoisy, 'ko', x1, cell2mat(a11_4), '--g', x1, cell2mat(a11_1000), '--r');
+% h_legend = legend('true target', 'noise', 'trainlm 20', 'trainlm 1000'); 
+% set(h_legend,'FontSize',14);
+% subplot(2,1,2);
+% plot(xx1, ff, 'b', x1, fnoisy, 'ko', x1, cell2mat(a21_20), '--g', x1, cell2mat(a21_1000), '--r');
+% h_legend = legend('true target', 'noise', 'traingcf 20', 'traingcf 1000'); 
+% set(h_legend,'FontSize',14);
+% export_fig('trainnoise.pdf')
+

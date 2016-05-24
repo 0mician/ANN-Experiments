@@ -59,17 +59,17 @@ end
 
 % Polishing of plots
 subplot(1,2,1);
-set(get(fun_graph,'Title'),'String', 'Function approximation','FontSize',14);
+set(get(fun_graph,'Title'),'String', 'Function approximation','FontSize',18,'FontWeight', 'normal');
 set(get(fun_graph,'Xlabel'),'String', 'X','FontSize',14)
 set(get(fun_graph,'Ylabel'),'String', 'Y','FontSize',14)
-h_legend = legend('real function','traingd', 'trainlm', 'trainbfg', 'traincgf');
+h_legend = legend('real function','traingd', 'trainlm', 'trainbfg', 'traincgf','FontSize',18);
 set(h_legend,'FontSize',14);
 
 subplot(1,2,2);
-set(get(epoch_graph,'Title'),'String', 'Training epochs','FontSize',14);
+set(get(epoch_graph,'Title'),'String', 'Training epochs','FontSize',18, 'FontWeight', 'normal');
 set(get(epoch_graph,'Xlabel'),'String', 'Epoch (log scale)','FontSize',14)
 set(get(epoch_graph,'Ylabel'),'String', 'Training MSE (log scale)','FontSize',14)
-g_legend = legend('traingd', 'trainlm', 'trainbfg', 'traincgf');
+g_legend = legend('traingd', 'trainlm', 'trainbfg', 'traincgf','FontSize',18);
 set(g_legend,'FontSize',14);
 set(gca,'yscale','log');
 set(gca,'xscale','log');

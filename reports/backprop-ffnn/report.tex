@@ -16,7 +16,7 @@
 \title{ \huge Artificial neural networks \\ 
   { \large Assignment 1: Supervised learning and generalization }}
 \author{
-        Lood, Cedric \\
+        Lood, Cédric \\
         \small Master of Bioinformatics
 }
 
@@ -30,13 +30,13 @@ Artificial neural networks that have at least 1 hidden layer have the
 property of being universal
 approximator\cite{hornik1989multilayer,leshno1993multilayer}. Hence,
 any non-linear function can be realized using classical feedforward
-multilayers networks. Here, I explore different training algorigthm
-and compare their yields in terms of performance, training time, and
-generalization. For the sake of simplification, I used the underlying,
-known function $f(x)=e(-x^2)sin(10x)$ to generate the dataset for
-batch supervised learning. The architecture of the neural network
-consists of 10 hidden units with sigmoid transfer function, 1 input,
-and 1 output (linear).
+multilayers networks. Here, I explore batch learning with different
+training algorithms and compare their yields in terms of performance,
+training time, and generalization. For the sake of illustration, I
+used the underlying, known function $f(x)=e(-x^2)sin(10x)$ to generate
+the dataset for batch supervised learning. The architecture of the
+neural network consists of 10 hidden units with sigmoid transfer
+function, 1 input, and 1 output (linear).
 
 \section{Noise-free learning}
 
@@ -46,7 +46,7 @@ algorithm selected are the ones reviewed during the lecture. Their
 relative performances can be appreciated by looking at the figure
 \ref{fig:trainnl}. On the left-hand side, the approximation of the
 different learning schemes after 100 epochs. On the right-hand side,
-the training error as it evolve during training.:
+the training error as it evolve during training.
 
 \begin{figure}[H]
   % \centering
@@ -78,20 +78,25 @@ the training error as it evolve during training.:
 
 For this section, I worked with a slightly easier function
 $f(x)=x^3-11x+2$. To simulate the presence of noise in the dataset, I
-chose to add a normally distributed $\epsilon$ to $f(x)$, for example:
-$f_{noisy}=f(x)+N(0,1)$.
+chose to add a normally distributed noise:
+$f_{noisy}(x)=f(x)+N(0,1)$. The gradient descent algorithms was
+replaced with gradient descent with momentum (\emph{traingda}) as the
+variance in the function lead to an infinite gradient (a solution
+would have been to normalize the function and work with z-scores)
 
-See graphic \ref{fig:trainnoise} where the noisy dataset was used for
-training. Typical overfitting can be seen when raising the value of
-the \emph{epochs}, represented in the graph by the red curve, which
-upon closer inspection seems to be following the noise rather than
-fitting the underlying function. Strategies to decide when to stop
-training can be implemented, such as validation set, cross validation,
-and bootstrapping.
+Given that we work with a synthetic dataset, we can work out the true
+mean square error between the underlying function and the model
+trained on the noisy data. I tried to get a sense for the impact of
+the amount of training cycles (Epochs) on the MSE (fixed number of
+neurons). There seems to be much fluctuation. Function estimation
+after $10^3$ epochs is also reported on the graph, as one can see, the
+\emph{trainlm} approach does seem to overfit the data more. An obvious
+approach to avoid overfitting in a real case dataset would be to use
+crossvalidation to select the correct amount of neurons and epochs.
 
 \begin{figure}[H]
   % \centering
-  \includegraphics[scale=.43]{trainnoise.pdf}
+  \includegraphics[scale=.40]{ffnn_noisy_testmse.pdf}
   \caption{Example of overfitting in noisy dataset}  
   \label{fig:trainnoise}
 \end{figure}
