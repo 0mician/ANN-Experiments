@@ -35,11 +35,13 @@ systems.
 \section{Hopfield network}
 
 In this section, we use hopfield neural networks to store 10 digitized
-handwritten digits. The network has an architecture of 240 neurons. It
-is trained in such a way that each digit is an attractor point of the
-network, where they represent minimums of the energy function. To note
-is the architecture consisting of 240 neurons, so the storage of 10
-patterns is possible with a small chance of error.
+handwritten digits. The network has an architecture of 240 neurons,
+fully connected and arranged in a single layer, with a saturation
+function \emph{satlins}. It is trained in such a way that each digit
+is an attractor point of the network, where they represent minimums of
+the energy function. To note is that with an architecture consisting
+of 240 neurons, the storage of 10 patterns is possible with a small
+chance of error.
 
 The first column of the left-hand side of figure \ref{fig:ndigits1}
 corresponds to the patterns that are stored in the network. Each digit
@@ -50,7 +52,10 @@ amount of iterations. As can be seen, the process is fairly good,
 failing only when the amount of noise is large - examples of failures
 are located in the last column of the digits 2, incorrectly
 reconstructed as a 7, and the digit 9, incorrectly reconstructed as a
-2. In both cases, the error do seem to make sense to the human eye.
+2. In both cases, the error do seem to make sense to the human
+eye. What happens there is that we jump from the neighborhood of the
+correct attractor due to the noise to the neighborhood of another
+attractor.
 
 Similarly, the first column of the figure \ref{fig:ndigits2} displays
 the original pattern. A fixed amount of noise is then introduced (2.5
@@ -75,9 +80,21 @@ attempted.
     \label{fig:ndigit}
 \end{figure}
 
+I did not detect spurious states - which are attractors not put in
+explicitely in the network. The probability that some exists though is
+not null.
+
 \section{Elman network}
 
+In this section, I investigated the use of Elman recurrent networks,
+known to be able to deal with time varying patterns, on a so-called
+\emph{Hammerstein system}. Elman network consists in two-layers, a
+hidden one, that uses sigmoid transfer function and has a feedback to
+the input, and an output layer that uses a linear transfer function.
 
+To determine appropriate numbers of epochs to use and the number of
+hidden neurons for the network, I investigated systematically multiple
+settings and looked at the test MSE.
 
 \bibliographystyle{ieeetr} 
 \bibliography{bib-db}
