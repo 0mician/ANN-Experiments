@@ -88,16 +88,34 @@ not null.
 
 In this section, I investigated the use of Elman recurrent networks,
 known to be able to deal with time varying patterns, on a so-called
-\emph{Hammerstein system}. Elman network consists in two-layers, a
-hidden one, that uses sigmoid transfer function and has a feedback to
-the input, and an output layer that uses a linear transfer function.
+\emph{Hammerstein system} (see figure below). Elman network consists
+in two-layers, a hidden one, that uses sigmoid transfer function and
+has a feedback to the input, and an output layer that uses a linear
+transfer function.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.4]{hammerstein_system.pdf}
+  \label{fig:hammerstein_system}
+\end{figure}
 
 To determine appropriate numbers of epochs to use and the number of
 hidden neurons for the network, I investigated systematically multiple
-settings and looked at the test MSE.
+settings and looked at the test MSE. The figure
+\ref{fig:elman_prediction} summarizes the results. First, I determined
+the number of training examples that worked best on the standard
+setting (20 neurons, 1000 epochs). This number fluctuated
+significantly across multiple runs as the system generated is
+stochastic. I kept the value of 300 for the rest of the analysis.
 
-\bibliographystyle{ieeetr} 
-\bibliography{bib-db}
+I then proceeded to determine the combination of epochs and number of
+neurons that resulted in the lowest test MSE before finally building a
+model of the system.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.4]{elman_prediction.pdf}
+  \label{fig:elman_prediction}
+\end{figure}
 
 \end{document}
