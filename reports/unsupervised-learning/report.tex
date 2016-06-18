@@ -72,6 +72,29 @@ digits.
     \includegraphics[scale=.20]{unsupervised_reconstructions.png}
     \label{fig:reconstructions}
 \end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{.5\textwidth}
+      The graphic on the right-hand side reflects the decrease in the
+      reconstruction error as the number of principal components is
+      increased. One would expect that the error keeps decreasing,
+      eventually reaching a value of 0, but after trying it out, I
+      couldn't reach exactly 0. Visual inspection of the matrices
+      containing the original dataset and the reconstructed one
+      offered insights as to why that was. In the original dataset,
+      many of the values are equal exactly to 0, which is not the case
+      in the reconstructed dataset where the same positions are close
+      to 0 but not exactly 0. I think this is due to numerical
+      reasons. A comparison of the cumulative eigenvalues
+      contributions and reconstruction error shows a very convincing
+      correlation as can be observed on the bottom graph.
+    \end{subfigure}%
+    \begin{subfigure}{.4\textwidth}
+      \vspace{-160pt}
+      \centering
+      \includegraphics[width=0.8\linewidth]{unsupervised_reconstruction_error.pdf}
+    \end{subfigure}
+\end{figure}
 
 \section{SOM}
 
