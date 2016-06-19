@@ -15,6 +15,7 @@
 \usepackage{subcaption}
 \usepackage{titling}
 \setlength{\droptitle}{-10em}  
+\usepackage{wrapfig}
 
 \title{ \huge Artificial neural networks \\ 
   { \large Assigment 4: PCA and SOM }}
@@ -74,7 +75,7 @@ digits.
 \end{figure}
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{.5\textwidth}
+    \begin{subfigure}[b]{.6\textwidth}
       The graphic on the right-hand side reflects the decrease in the
       reconstruction error as the number of principal components is
       increased. One would expect that the error keeps decreasing,
@@ -90,16 +91,45 @@ digits.
       correlation as can be observed on the bottom graph.
     \end{subfigure}%
     \begin{subfigure}{.4\textwidth}
-      \vspace{-160pt}
+      \vspace{-140pt}
       \centering
-      \includegraphics[width=0.8\linewidth]{unsupervised_reconstruction_error.pdf}
+      \includegraphics[width=0.75\linewidth]{unsupervised_reconstruction_error.pdf}
     \end{subfigure}
 \end{figure}
 
 \section{SOM}
+With self-organizing maps, the idea is to allow for insightful
+visualization in 2D or 3D of potentially very high dimensional
+prototype vectors (such as those created using vector quantization).
 
-% \bibliographystyle{ieeetr} 
-% \bibliography{bib-db}
+As can be seen on figure \ref{fig:som}, a fixed topology for the
+prototype vectors is given before the training starts. The dataset is
+illustrated in the green points and consists of a hollow
+cylinder. After training, one can observe that the prototypes have
+moved closer to the data and captured the essence of the
+distribution. The grid topology seems to be more sparse than the other
+two alternatives.
 
+On the right-hand side of the figure \ref{fig:som} you can see the
+results of the SOM in terms of the prototype vectors (red dots), each
+located within a cluster. Using the Rand Index for different trainings
+to verify the correctness of the simulated classification using the
+SOM vs the true labels, we obtain a maximum RI of 86\% and an adjusted
+RI of about 72\%. That we do not reach 100\% correctness is expected
+as some of the clusters share considerable overlap.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.7\textwidth}
+      \centering
+      \includegraphics[width=0.8\linewidth]{SOM_cylinder.pdf}
+    \end{subfigure}%
+    \begin{subfigure}{.3\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{SOM_iris.pdf}
+    \end{subfigure}
+    \caption{SOM}
+    \label{fig:som}
+\end{figure}
 
 \end{document}
