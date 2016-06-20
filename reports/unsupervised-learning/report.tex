@@ -30,15 +30,16 @@
 
 \section{Context}
 
-In this exercise, I explored techniques of unsupervised learning using
-neural networks. Specifically Principal Component Analysis (PCA) and
-Self-Organizing Maps (SOM).
+In this exercise, I explored techniques of unsupervised learning and
+dimensionality reduction using neural networks. Specifically, principal
+component analysis (PCA) and self-organizing maps (SOM).
 
 \section{Principal component analysis}
 
 The idea behind PCA is to reduce the dimensionality of the data in the
 input space with the hope that the lower dimensional space captures
-most of the structure of the data. This is done by projecting the data
+most of the structure of the data (``most'' is left to the interpretation
+of the designer of the solution). This is done by projecting the data
 onto the eigenvectors of the covariance matrix. Once the lower
 dimensionality space has been computed, another question one might try
 to solve is to see whether a correct reconstruction of the datapoints
@@ -51,8 +52,8 @@ left-hand side of the figure below, we view the mean ``3'' over the
 500 examples we have. The right-hand side plot shows the magnitude of
 the eigenvalues. The bottom left-hand side shows the plots of the
 eigenvectors associated with the highest eigenvalues. As can be seen
-on the ``EV 256'' plot, the curvy feature typical of a 3 seems to be
-associated with the highest eigenvalue.
+on the ``EV 256'' plot, the curvy features typical of a ``3'' seems to
+be associated with the highest eigenvalue.
 
 \begin{figure}[H]
     \centering
@@ -85,20 +86,21 @@ digits.
       offered insights as to why that was. In the original dataset,
       many of the values are equal exactly to 0, which is not the case
       in the reconstructed dataset where the same positions are close
-      to 0 but not exactly 0. I think this is due to numerical
-      reasons. A comparison of the cumulative eigenvalues
-      contributions and reconstruction error shows a very convincing
-      correlation as can be observed on the bottom graph.
+      to 0 but not exactly 0. I think this may be due to artefacts
+      typical of the numerical algorithms involved. A comparison of
+      the cumulative eigenvalues contributions and reconstruction
+      error shows a very convincing correlation of the functionals as
+      can be observed on the bottom graph.
     \end{subfigure}%
     \begin{subfigure}{.4\textwidth}
-      \vspace{-140pt}
+      \vspace{-120pt}
       \centering
       \includegraphics[width=0.75\linewidth]{unsupervised_reconstruction_error.pdf}
     \end{subfigure}
 \end{figure}
 
 \section{SOM}
-With self-organizing maps, the idea is to allow for insightful
+With self-organizing maps, the key idea is to allow for insightful
 visualization in 2D or 3D of potentially very high dimensional
 prototype vectors (such as those created using vector quantization).
 
@@ -106,7 +108,7 @@ As can be seen on figure \ref{fig:som}, a fixed topology for the
 prototype vectors is given before the training starts. The dataset is
 illustrated in the green points and consists of a hollow
 cylinder. After training, one can observe that the prototypes have
-moved closer to the data and captured the essence of the
+moved closer to the data and seem to have captured the essence of the
 distribution. The grid topology seems to be more sparse than the other
 two alternatives.
 
@@ -128,7 +130,8 @@ as some of the clusters share considerable overlap.
       \centering
       \includegraphics[width=0.9\linewidth]{SOM_iris.pdf}
     \end{subfigure}
-    \caption{SOM}
+    \caption{left: different topologies for artificial dataset - right:
+      Iris dataset}
     \label{fig:som}
 \end{figure}
 
