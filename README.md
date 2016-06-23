@@ -11,16 +11,14 @@ Matlab R2015b, with the Neural Network Toolbox.
 Most of the figures created in this project used the export_fig library for
 the export to pdf. The library is available [on github](https://github.com/altmany/export_fig) 
 
+# Function estimation
+[See report!](reports/backprop-ffnn/report.pdf)
 
-# simple_perceptron
-Collection of homemade functions displaying characteristics of perceptrons.
+# Bayesian learning
+[See report!](reports/bayesian-learning-nn/report.pdf)
 
-# ffnn_train
-Couple of scripts there to illustrate properties of feed forward neural networks
-and their training in terms of speed and accuracy. For the noise free function
-the dataset is generated from a know functional relation, without any noise.
-The other dataset is generated with gaussian noise, with the goal of investigating
-overfitting.
+# Recurrent networks
+[See report!](reports/recurrent-nn/report.pdf)
 
-
-
+# Unsupervised learning
+[See report!](reports/unsupervised-learning/report.pdf)
