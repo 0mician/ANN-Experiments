@@ -19,7 +19,6 @@ T4=[0 ; 1; 0; 1];
 az = 52.5;
 el = 30;
 
-%**********************************
 % using just the first 2 data points
 
 %figure;

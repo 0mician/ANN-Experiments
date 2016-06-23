@@ -1,10 +1,6 @@
 % Approximation of (non-noisy) non linear function using feedforward neural
-% networks with gradient descent
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-clear
-clc
-close all
+clear; clc; close all
 
 addpath export_fig
 
