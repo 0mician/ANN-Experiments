@@ -12,13 +12,13 @@ Most of the figures created in this project used the export_fig library for
 the export to pdf. The library is available [on github](https://github.com/altmany/export_fig) 
 
 # Function estimation
-[See report!](reports/backprop-ffnn/report.pdf)
+[See report](reports/backprop-ffnn/report.pdf)
 
 # Bayesian learning
-[See report!](reports/bayesian-learning-nn/report.pdf)
+[See report](reports/bayesian-learning-nn/report.pdf)
 
 # Recurrent networks
-[See report!](reports/recurrent-nn/report.pdf)
+[See report](reports/recurrent-nn/report.pdf)
 
 # Unsupervised learning
-[See report!](reports/unsupervised-learning/report.pdf)
+[See report](reports/unsupervised-learning/report.pdf)
