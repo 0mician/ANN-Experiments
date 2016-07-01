@@ -13,7 +13,6 @@ end
 true_labels = temp;
 
 %Training the SOM
-%%%%%%%%%%%%%%%%%
 x_length = 3;
 y_length = 1;
 net = newsom(X',[y_length x_length],'gridtop');
@@ -30,11 +29,9 @@ zlabel('W(i,3)', 'Fontsize', 14);
 hold off
 
 % Assigning examples to clusters
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 outputs = sim(net,X');
 [~,assignment]  =  max(outputs);
 
 %Compare clusters with true labels
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 [AR,RI,MI,HI]=unsupervised_randindex(assignment,true_labels');
 

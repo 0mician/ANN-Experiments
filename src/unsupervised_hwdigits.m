@@ -1,9 +1,8 @@
 clc, clear all, close all;
 
-load datasets/threes.mat -ascii
+load ../datasets/threes.mat -ascii
 
 % Computing mean, cov, and ev
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure('Color', [1 1 1]);
 subplot(2,2,1);
 mean_three = mean(threes, 1);
@@ -29,7 +28,6 @@ subplot(4,6,21);
 imagesc(reshape(ev(:,256),16,16),[0,1]);
 
 % Compression/recon of an image for testing
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 npca = 4;
 figure('Color', [1 1 1]);
 i = 1;
@@ -48,7 +46,6 @@ for index = 1:2
 end
 
 % Compression of the whole dataset
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 error = zeros(50, 1);
 for npca = 1:50    
     reconstructed_data = zeros(500, 256);
@@ -71,7 +68,6 @@ ylabel('Reconstruction error','FontSize',14);
 
 
 % Reconstruction error with all components == 0?
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 reconstructed_all = zeros(500, 256);
 for index = 1:500
     [evec,eval] = eigs(cov_matrix, 256);
@@ -82,7 +78,6 @@ end
 disp(sum(sum((reconstructed_data - threes).^2)));
 
 % Eigenvalues vs. error.
-%%%%%%%%%%%%%%%%%%%%%%%%
 [ev, d] = eig(cov_matrix);
 deval = diag(d);
 deval = sort(deval,'descend');

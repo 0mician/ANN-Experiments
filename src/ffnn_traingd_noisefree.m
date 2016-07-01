@@ -1,16 +1,9 @@
 % Approximation of (non-noisy) non linear function using feedforward neural
 % networks with gradient descent
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-clear
-clc
-close all
-
+clear; clc; close all
 addpath export_fig
 
 % Setting up non linear function
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% functions to learn
 x1 = -5:0.1:5; f = x1.^3 + x1.^2 - 1;
 p1 = con2seq(x1); t1 = con2seq(f);
 
@@ -28,7 +21,6 @@ zxx1 = zscore(xx1,1); zff = zscore(ff, 1);
 xx2 = -pi:0.01:pi ; gg = exp(-xx2.^2).*sin(10.*xx2);
 
 % Setting-up network
-%%%%%%%%%%%%%%%%%%%%
 
 % Gradient descent
 % f(x)
@@ -64,9 +56,6 @@ netf2_1000 = train(netf2_1000,p2,t2);
 a21_1000 = sim(netf2_1000,p2);
 
 % Plotting results
-%%%%%%%%%%%%%%%%%%
-
-figure;
 figure('Color',[1 1 1]);
 subplot(2,1,1);
 plot(zxx1,zff,'b',zx1,cell2mat(a11_20),'--g', zx1, cell2mat(a11_40), '--r', zx1, cell2mat(a11_1000), '--k' );
@@ -79,8 +68,6 @@ set(h_legend,'FontSize',14);
 export_fig('traingd.pdf')
 
 % Trying with larger values of epochs for the function g
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % netf2_1000 = feedforwardnet(10,'traingd');
 % netf2_1000.trainParam.epochs=1000;
 % netf2_1000 = train(netf2_1000,p2,t2);

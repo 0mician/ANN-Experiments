@@ -1,12 +1,9 @@
 % Approximation of (non-noisy) non linear function using feedforward neural
-
 clear; clc; close all
 
 addpath export_fig
 
 % Setting up non linear function
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 x = -pi:0.1:pi ; f = exp(-x.^2).*sin(10.*x);
 p = con2seq(x); t = con2seq(f);
 
@@ -25,7 +22,6 @@ plot(xx, ff,'k'); % underlying real function
 epoch_graph = subplot(1,2,2);
 
 % Training (4 training algorithm)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 for i = 1:4
     
     algorithm = char(strcat(training_algorithm(i,:)));

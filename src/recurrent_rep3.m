@@ -1,8 +1,6 @@
-%%%%%%%%%%%
-% rep3.m
 % A script which generates n random initial points for
-%and visualise results of simulation of a 3d Hopfield network net
-%%%%%%%%%%
+% and visualise results of simulation of a 3d Hopfield network net
+
 T = [1 1 1; -1 -1 1; 1 -1 -1]';
 net = newhop(T);
 n=10;

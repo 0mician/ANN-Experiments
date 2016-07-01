@@ -1,22 +1,19 @@
-% Marco Signoretto, March 2011
+% Adapted from Marco Signoretto (March 2011)
 close all; clear all; clc;
 
-% first we generate data uniformely distributed within two
-% concentric cylinders
+% first we generate data uniformely distributed within two concentric cylinders
 X=2*(rand(5000,3)-.5);
 indx=(X(:,1).^2+X(:,2).^2<.6)&(X(:,1).^2+X(:,2).^2>.1);
 X=X(indx,:)';
 
 % we then initialize the SOM with hextop as topology function
 % and linkdist as distance function
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 nethex  = newsom(X,[5 5 5],'hextop','linkdist'); 
 netgrid = newsom(X,[5 5 5],'gridtop','linkdist'); 
 netrand = newsom(X,[5 5 5],'randtop','linkdist'); 
 
 % plot the data distribution with the prototypes of the untrained network
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure('Color', [1 1 1]);
 subplot(3,4,1);
 plot3(X(1,:),X(2,:),X(3,:),'.g','markersize',10);
@@ -52,7 +49,6 @@ zlabel('W(i,3)', 'Fontsize', 14);
 hold off
 
 % finally we train the network and see how their position changes
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hexagonal topology
 nethex.trainParam.epochs = 1000;
 nethex = train(nethex,X);

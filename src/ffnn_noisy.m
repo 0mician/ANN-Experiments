@@ -1,16 +1,10 @@
 % Approximation of non linear function + gaussian noise using feedforward neural
 % networks with various training algorithms
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-clear
-clc
-close all
-
+clear; clc; close all
 addpath export_fig
 
 % Setting up non linear function
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% functions to learn
 x1 = -5:0.05:5; f = x1.^3 + x1.^2 - 1;
 
 fnoisy = f + randn(size(f)) * 10;
@@ -29,12 +23,11 @@ h_legend = legend('real function','noisy dataset');
 set(h_legend,'FontSize',18);
 
 % Setting up training set and validation set
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % [trainInd, testInd] = dividerand(200,0.7,0.3);
 % xt = x1(trainInd); yt = fnoisy(trainInd);
 % x_test = x1(testInd); y_test = fnoisy(testInd);
 
-%%% test classifier after 1000 epochs
+% test classifier after 1000 epochs
 training_algorithm=char('traingda','trainlm','trainbfg','traincgf');
 colors = {'b-.', 'ro', 'm-.', 'c-.'};
 i = 1;
@@ -64,7 +57,6 @@ h_legend = legend('traingda', 'trainlm', 'trainbfg', 'traincgf','FontSize',18);
 set(h_legend,'FontSize',14);
 
 % Main loop
-%%%%%%%%%%%
 training_algorithm=char('traingda','trainlm','trainbfg','traincgf');
 epoch_list = linspace(100, 1000, 10);
 err_matrix = zeros(4,10); i = 1; j = 1;

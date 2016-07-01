@@ -2,13 +2,9 @@
 % 
 % Marco Signoretto, March 2011
 
-
-
 close all;
 clear all;
 clc;
-
-
 
 disp('In this demo we use PCA to compress an hyperspectral  image.');disp([' ']); 
 
@@ -24,8 +20,6 @@ name_file=input('file name? (press enter for default=scene7.zip) \n','s');
 if isempty(name_file);
    name_file='scene7.zip';
 end
-
-
 
 disp([' ']);disp('downloading and unzipping files from repository...this might take a while!');
 
@@ -112,8 +106,6 @@ figure;
 imagesc(reshape(X_(:,1),sizes(1),sizes(2)));
 colormap(gray);
 drawnow;
-
-
 
 % finally delete the files that were created
 for i=1:numel(filename);delete(filename{i}); end

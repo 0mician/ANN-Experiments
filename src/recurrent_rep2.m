@@ -1,8 +1,5 @@
-%%%%%%%%%%%
-% rep2.m
 % A script which generates n random initial points 
-%and visualises results of simulation of a 2d Hopfield network 'net'
-%%%%%%%%%%
+% and visualises results of simulation of a 2d Hopfield network 'net'
 
 T = [1 1; -1 -1; 1 -1]';
 net = newhop(T);

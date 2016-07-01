@@ -2,15 +2,13 @@
 %model a so called hammerstein model. The system is described like this:
 
 % x(t+1) = 0.6x(t-1) + sin(u(t))
-%y(t) = x(t);
+% y(t) = x(t);
 
-%Elman network should be able to understand the relation between output
-%y(t) and input u(t). x(t) is a latent variable representing the internal
-%state of the system/
+% Elman network should be able to understand the relation between output
+% y(t) and input u(t). x(t) is a latent variable representing the internal
+% state of the system/
 
-clc;
-clear;
-close all;
+clc; clear; close all;
 
 n=1000; %total number of samples
 
